@@ -1,0 +1,22 @@
+ ̣/*
+    colores la app
+    verde medio #128C7E
+    verde intenso #075E54
+    verde claro #25D366
+    azul #34B7F1
+ */
+
+body{
+    background-color: blue;
+}
+
+.container {
+    background-image: url('../img/fondo.jpg');
+    width: 100px;
+    height: 300px;
+}
+
+.row h1 {
+    text-align: center;
+    color: #075E54;
+}

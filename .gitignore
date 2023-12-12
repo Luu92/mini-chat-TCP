@@ -1,0 +1,9 @@
+# Archivos generados despues de compilar en Linux
+*.o
+*.out
+
+# Archivos generados despues de compilar en Windows
+*.exe
+*.dll
+*.obj
+
