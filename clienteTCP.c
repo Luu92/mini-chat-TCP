@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include "colors.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 
     system("clear");
 
-    printf("ingrese la ip del servidor\n");
+    printf( YELLOW "ingrese la ip del servidor\n");
     scanf("%s", ip);
 
     printf("ingrese el puerto de conexion\n");
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
     // Socket
     if ((fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
-        printf("socket() error\n");
+        printf( RED "socket() error\n");
         exit(-1);
     }
 
@@ -38,21 +39,21 @@ int main(int argc, char *argv[])
     if (connect(fd, (struct sockaddr *)&server,
                 sizeof(struct sockaddr)) == -1)
     {
-        printf("connect() error\n");
+        printf( RED "connect() error\n");
         exit(-1);
     }
     // Recibir mensaje de bienvenida
     if ((numbytes = recv(fd, buf, 1024, 0)) == -1)
     {
-        printf("Error en recv() \n");
+        printf( RED "Error en recv() \n");
         exit(-1);
     }
-    printf("%s\n", buf);
+    printf( BLUE "%s\n", buf);
     // Ciclo para enviar y recibir mensajes
     while (1)
     {
         // El servidor espera el primer mensaje
-        printf("Escribir mensaje: ");
+        printf( GREEN "Me: ");
         scanf("%*c%[^\n]", enviar);
         send(fd, enviar, 1024, 0);
         if (strcmp(enviar, "salir") == 0)
@@ -66,7 +67,7 @@ int main(int argc, char *argv[])
         {
             break;
         }
-        printf("Servidor: %s\n", buf);
+        printf("Server Say: %s\n", buf);
     }
     close(fd);
 }
